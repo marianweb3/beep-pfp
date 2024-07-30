@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #f7e730;
+}
+
+.shadow_8px {
+  box-shadow: 8px 8px 0px 0px #00000040;
+}
