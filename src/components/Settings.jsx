@@ -29,7 +29,7 @@ const Settings = ({ classname }) => {
     const { width, height } = selectedImageType;
     const imageElement = document.getElementById("pfpImage");
     if (imageElement) {
-      html2canvas(imageElement, { scale: 10, width, height })
+      html2canvas(imageElement, { scale: 3, width, height })
         .then((canvas) => {
           const dataUrl = canvas.toDataURL("image/png");
           const link = document.createElement("a");
