@@ -12,13 +12,13 @@ const tabs = [
 ];
 
 const imageCategories = {
-  background: Array.from({ length: 2 }, (_, i) => `photo-1/bg${i}.webp`),
+  background: Array.from({ length: 3 }, (_, i) => `photo-1/bg${i}.webp`),
   head: Array.from({ length: 1 }, (_, i) => `photo-1/body${i}.webp`),
-  hats: Array.from({ length: 5 }, (_, i) => `photo-1/hat${i}.webp`),
-  faces: Array.from({ length: 1 }, (_, i) => `photo-1/emotion${i}.webp`),
-  hands: Array.from({ length: 3 }, (_, i) => `photo-1/hand${i}.webp`),
-  accessories: Array.from({ length: 3 }, (_, i) => `photo-1/acs${i}.webp`),
-  foot: Array.from({ length: 2 }, (_, i) => `photo-1/foot${i}.webp`),
+  hats: Array.from({ length: 8 }, (_, i) => `photo-1/hat${i}.webp`),
+  faces: Array.from({ length: 2 }, (_, i) => `photo-1/emotion${i}.webp`),
+  hands: Array.from({ length: 6 }, (_, i) => `photo-1/hand${i}.webp`),
+  accessories: Array.from({ length: 6 }, (_, i) => `photo-1/acs${i}.webp`),
+  foot: Array.from({ length: 3 }, (_, i) => `photo-1/foot${i}.webp`),
 };
 
 const ClotheSelector = () => {
@@ -42,7 +42,7 @@ const ClotheSelector = () => {
         hats: setHat,
         hands: setHand,
         accessories: setAcs,
-        emotion: setEmotion,
+        faces: setEmotion,
         foot: setFoot,
       };
       setters[selectedTab]?.(index);

@@ -32,13 +32,13 @@ const useAvatarStore = create((set) => ({
     set({ isDownloadButtonClicked: isClicked }),
   randomize: () =>
     set({
-      background: `photo-1/bg${Math.floor(Math.random() * 2)}.webp`,
+      background: `photo-1/bg${Math.floor(Math.random() * 3)}.webp`,
       clothes: `photo-1/body${Math.floor(Math.random() * 1)}.webp`,
-      hat: `photo-1/hat${Math.floor(Math.random() * 5)}.webp`,
-      hand: `photo-1/hand${Math.floor(Math.random() * 3)}.webp`,
-      acs: `photo-1/acs${Math.floor(Math.random() * 3)}.webp`,
-      emotion: `photo-1/emotion${Math.floor(Math.random() * 1)}.webp`,
-      foot: `photo-1/foot${Math.floor(Math.random() * 2)}.webp`,
+      hat: `photo-1/hat${Math.floor(Math.random() * 8)}.webp`,
+      hand: `photo-1/hand${Math.floor(Math.random() * 6)}.webp`,
+      acs: `photo-1/acs${Math.floor(Math.random() * 6)}.webp`,
+      emotion: `photo-1/emotion${Math.floor(Math.random() * 2)}.webp`,
+      foot: `photo-1/foot${Math.floor(Math.random() * 3)}.webp`,
     }),
   reset: () =>
     set({

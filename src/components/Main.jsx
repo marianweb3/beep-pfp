@@ -26,7 +26,7 @@ const Main = () => {
     emotion,
     selectedImageType,
   } = useAvatarStore(avatarSelector);
-
+  console.log(emotion);
   return (
     <div className="flex flex-col justify-center items-center min-h-[calc(100vh-184px)] relative z-10">
       <div
