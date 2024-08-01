@@ -29,10 +29,12 @@ const Main = () => {
 
   const [compositeImage, setCompositeImage] = useState(null);
 
+  console.log(background, clothes, hat, hand, acs, foot, emotion);
+
   useEffect(() => {
     const createCompositeImage = async () => {
       const canvas = document.createElement("canvas");
-      const scale = 10; // Increase this for even higher quality, but be mindful of performance
+      const scale = 5; // Increase this for even higher quality, but be mindful of performance
       canvas.width = 382 * scale;
       canvas.height = 382 * scale;
       const ctx = canvas.getContext("2d");
@@ -42,7 +44,10 @@ const Main = () => {
         return new Promise((resolve, reject) => {
           const img = new Image();
           img.onload = () => resolve(img);
-          img.onerror = reject;
+          img.onerror = (error) => {
+            console.error(`Error loading image: ${src}`, error);
+            reject(error);
+          };
           img.src = src;
         });
       };

@@ -8,7 +8,7 @@ const imageTypes = [
 ];
 
 const useAvatarStore = create((set) => ({
-  background: "photo-1/bg1.webp",
+  background: "photo-1/bg0.webp",
   clothes: "photo-1/body0.webp",
   hat: "photo-1/hat0.webp",
   emotion: "photo-1/emotion0.webp",
@@ -34,11 +34,11 @@ const useAvatarStore = create((set) => ({
     set({
       background: `photo-1/bg${Math.floor(Math.random() * 3)}.webp`,
       clothes: `photo-1/body${Math.floor(Math.random() * 1)}.webp`,
-      hat: `photo-1/hat${Math.floor(Math.random() * 8)}.webp`,
-      hand: `photo-1/hand${Math.floor(Math.random() * 4)}.webp`,
+      hat: `photo-1/hat${Math.floor(Math.random() * 10)}.webp`,
+      hand: `photo-1/hand${Math.floor(Math.random() * 6)}.webp`,
       acs: `photo-1/acs${Math.floor(Math.random() * 6)}.webp`,
       emotion: `photo-1/emotion${Math.floor(Math.random() * 2)}.webp`,
-      foot: `photo-1/foot${Math.floor(Math.random() * 3)}.webp`,
+      foot: `photo-1/foot${Math.floor(Math.random() * 4)}.webp`,
     }),
   reset: () =>
     set({
