@@ -16,7 +16,7 @@ const imageCategories = {
   head: Array.from({ length: 1 }, (_, i) => `photo-1/body${i}.webp`),
   hats: Array.from({ length: 8 }, (_, i) => `photo-1/hat${i}.webp`),
   faces: Array.from({ length: 2 }, (_, i) => `photo-1/emotion${i}.webp`),
-  hands: Array.from({ length: 6 }, (_, i) => `photo-1/hand${i}.webp`),
+  hands: Array.from({ length: 4 }, (_, i) => `photo-1/hand${i}.webp`),
   accessories: Array.from({ length: 6 }, (_, i) => `photo-1/acs${i}.webp`),
   foot: Array.from({ length: 3 }, (_, i) => `photo-1/foot${i}.webp`),
 };

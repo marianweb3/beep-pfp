@@ -32,7 +32,7 @@ const Main = () => {
   useEffect(() => {
     const createCompositeImage = async () => {
       const canvas = document.createElement("canvas");
-      const scale = 2; // Increase this for even higher quality, but be mindful of performance
+      const scale = 10; // Increase this for even higher quality, but be mindful of performance
       canvas.width = 382 * scale;
       canvas.height = 382 * scale;
       const ctx = canvas.getContext("2d");
