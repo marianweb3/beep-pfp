@@ -18,16 +18,12 @@ const Settings = ({ classname }) => {
     imageTypes,
     selectedImageType,
     setSelectedImageType,
-    setIsDownloadButtonClicked,
   } = useAvatarStore(avatarSelector);
-  const [currentIndex, setCurrentIndex] = useState(
-    imageTypes.findIndex((type) => type.type === selectedImageType.type)
-  );
 
   const handleDownload = () => {
-    setIsDownloadButtonClicked(true); // Set the flag to true
     const { width, height } = selectedImageType;
     const imageElement = document.getElementById("pfpImage");
+    console.log();
     if (imageElement) {
       html2canvas(imageElement, { scale: 3, width, height })
         .then((canvas) => {
@@ -36,11 +32,9 @@ const Settings = ({ classname }) => {
           link.href = dataUrl;
           link.download = "beep.png";
           link.click();
-          setIsDownloadButtonClicked(false); // Reset the flag after download
         })
         .catch((error) => {
           console.error("Error while downloading:", error);
-          setIsDownloadButtonClicked(false); // Reset the flag if there's an error
         });
     }
   };

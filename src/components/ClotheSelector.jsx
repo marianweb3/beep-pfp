@@ -12,13 +12,13 @@ const tabs = [
 ];
 
 const imageCategories = {
-  background: Array.from({ length: 5 }, (_, i) => `photo-1/bg${i}.webp`),
-  head: Array.from({ length: 1 }, (_, i) => `photo-1/body${i}.webp`),
-  hats: Array.from({ length: 11 }, (_, i) => `photo-1/hat${i}.webp`),
-  faces: Array.from({ length: 2 }, (_, i) => `photo-1/emotion${i}.webp`),
-  hands: Array.from({ length: 7 }, (_, i) => `photo-1/hand${i}.webp`),
-  accessories: Array.from({ length: 7 }, (_, i) => `photo-1/acs${i}.webp`),
-  foot: Array.from({ length: 5 }, (_, i) => `photo-1/foot${i}.webp`),
+  background: Array.from({ length: 5 }, (_, i) => `photo-1/bg${i}.png`),
+  head: Array.from({ length: 1 }, (_, i) => `photo-1/body${i}.png`),
+  hats: Array.from({ length: 12 }, (_, i) => `photo-1/hat${i}.png`),
+  faces: Array.from({ length: 2 }, (_, i) => `photo-1/emotion${i}.png`),
+  hands: Array.from({ length: 11 }, (_, i) => `photo-1/hand${i}.png`),
+  accessories: Array.from({ length: 9 }, (_, i) => `photo-1/acs${i}.png`),
+  foot: Array.from({ length: 6 }, (_, i) => `photo-1/foot${i}.png`),
 };
 
 const ClotheSelector = () => {
@@ -34,41 +34,32 @@ const ClotheSelector = () => {
     setFoot,
   } = useAvatarStore();
 
-  const handleImageClick = useCallback(
-    (index) => {
-      const setters = {
-        background: setBackground,
-        head: setClothes,
-        hats: setHat,
-        hands: setHand,
-        accessories: setAcs,
-        faces: setEmotion,
-        foot: setFoot,
-      };
-      setters[selectedTab]?.(index);
-    },
-    [
-      selectedTab,
-      setBackground,
-      setClothes,
-      setHat,
-      setHand,
-      setAcs,
-      setEmotion,
-      setFoot,
-    ]
-  );
+  const handleImageClick = (index) => {
+    const setters = {
+      background: setBackground,
+      head: setClothes,
+      hats: setHat,
+      hands: setHand,
+      accessories: setAcs,
+      faces: setEmotion,
+      foot: setFoot,
+    };
+    setters[selectedTab]?.(index);
+  };
 
   const renderedImages = useMemo(() => {
-    return imageCategories[selectedTab]?.map((image, index) => (
-      <img
-        key={index}
-        src={`/${image}`}
-        alt={`${selectedTab} ${index}`}
-        className="size-[84px] cursor-pointer border-2 border-black rounded-full shadow-[4px_4px_0px_0px_#00000040]"
-        onClick={() => handleImageClick(index)}
-      />
-    ));
+    return imageCategories[selectedTab]?.map((image, index) => {
+      console.log(image, index);
+      return (
+        <img
+          key={index}
+          src={`/${image}`}
+          alt={`${selectedTab} ${index}`}
+          className="size-[84px] cursor-pointer border-2 border-black rounded-full shadow-[4px_4px_0px_0px_#00000040]"
+          onClick={() => handleImageClick(index)}
+        />
+      );
+    });
   }, [selectedTab, handleImageClick]);
 
   return (

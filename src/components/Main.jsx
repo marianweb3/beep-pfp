@@ -7,7 +7,6 @@ const Main = () => {
   const avatarSelector = (state) => ({
     background: state.background,
     clothes: state.clothes,
-    face: state.face,
     hat: state.hat,
     hand: state.hand,
     acs: state.acs,
@@ -27,57 +26,6 @@ const Main = () => {
     selectedImageType,
   } = useAvatarStore(avatarSelector);
 
-  const [compositeImage, setCompositeImage] = useState(null);
-
-  console.log(background, clothes, hat, hand, acs, foot, emotion);
-
-  useEffect(() => {
-    const createCompositeImage = async () => {
-      const canvas = document.createElement("canvas");
-      const scale = 5; // Increase this for even higher quality, but be mindful of performance
-      canvas.width = 382 * scale;
-      canvas.height = 382 * scale;
-      const ctx = canvas.getContext("2d");
-      ctx.scale(scale, scale);
-
-      const loadImage = (src) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = (error) => {
-            console.error(`Error loading image: ${src}`, error);
-            reject(error);
-          };
-          img.src = src;
-        });
-      };
-
-      try {
-        const images = await Promise.all([
-          loadImage(`/${background}`),
-          loadImage(`/${clothes}`),
-          loadImage(`/${hat}`),
-          loadImage(`/${hand}`),
-          loadImage(`/${foot}`),
-          loadImage(`/${acs}`),
-          loadImage(`/${emotion}`),
-        ]);
-
-        ctx.imageSmoothingEnabled = false; // Disable image smoothing for pixel-perfect rendering
-
-        images.forEach((img) => {
-          ctx.drawImage(img, 0, 0, 382, 382);
-        });
-
-        setCompositeImage(canvas.toDataURL("image/png", 1.0)); // Use PNG for lossless quality
-      } catch (error) {
-        console.error("Error creating composite image:", error);
-      }
-    };
-
-    createCompositeImage();
-  }, [background, clothes, hat, hand, foot, acs, emotion]);
-
   return (
     <div className="flex flex-col justify-center items-center min-h-[calc(100vh-184px)] relative z-10">
       <div
@@ -90,15 +38,43 @@ const Main = () => {
               className="bg-[#C8E3C2] border-[4px] border-black px-3 sm:px-[30px] py-[45px] h-full rounded-[18px] bg-no-repeat bg-cover flex xl:flex-row xl:items-start items-center flex-col justify-between gap-5 lg:gap-16"
               style={{ backgroundImage: "url('/grid.svg')" }}
             >
-              <div className="w-full sm:w-[382px]  bg-[#F8FFDE] border-[2px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] shrink-0 relative">
-                {compositeImage && (
-                  <img
-                    src={compositeImage}
-                    alt="Avatar"
-                    className="w-full h-full object-contain"
-                    style={{ imageRendering: "pixelated" }}
-                  />
-                )}
+              <div className="w-full md:w-[382px] h-[382px] bg-[#F8FFDE] border-[2px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] shrink-0 relative">
+                <img
+                  src={`/${background}`}
+                  className="w-full h-full"
+                  alt="Background"
+                />
+
+                <img
+                  src={`/${clothes}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
+                  alt="Clothes"
+                />
+                <img
+                  src={`/${hat}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[3]"
+                  alt="Hat"
+                />
+                <img
+                  src={`/${hand}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+                  alt="Hand"
+                />
+                <img
+                  src={`/${foot}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+                  alt="foot"
+                />
+                <img
+                  src={`/${acs}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+                  alt="acs"
+                />
+                <img
+                  src={`/${emotion}`}
+                  className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+                  alt="emotion"
+                />
               </div>
               <Settings classname="md:!hidden !flex" />
 
@@ -120,14 +96,43 @@ const Main = () => {
           height: `${selectedImageType.height}px`,
         }}
       >
-        {compositeImage && (
+        <img
+          src={`/${background}`}
+          className="w-full h-full absolute left-0 top-0"
+          alt="Background"
+        />
+        <div className="size-[500px] relative">
           <img
-            src={compositeImage}
-            alt="Avatar"
-            className="w-full h-full object-contain"
-            style={{ imageRendering: "pixelated" }}
+            src={`/${clothes}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
+            alt="Clothes"
           />
-        )}
+          <img
+            src={`/${hat}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[3]"
+            alt="Hat"
+          />
+          <img
+            src={`/${hand}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+            alt="Hand"
+          />
+          <img
+            src={`/${foot}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+            alt="foot"
+          />
+          <img
+            src={`/${acs}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+            alt="acs"
+          />
+          <img
+            src={`/${emotion}`}
+            className="w-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain z-[5]"
+            alt="emotion"
+          />
+        </div>
       </div>
     </div>
   );
