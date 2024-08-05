@@ -110,7 +110,7 @@ const Main = () => {
         className={`absolute top-[-9999px] left-[-9999px] bg-[#F8FFDE] flex justify-end ${
           selectedImageType.type === "Twitter banner"
             ? "justify-end"
-            : "items-end justify-center"
+            : "items-center justify-center"
         }`}
         id="pfpImage"
         style={{
@@ -120,7 +120,7 @@ const Main = () => {
       >
         <img
           src={`/${getBackgroundImage()}`}
-          className="w-full h-full absolute left-0 top-0 object-contain"
+          className="w-full h-full absolute left-0 top-0 object-cover"
           alt="Background"
         />
         <div className="size-[500px] relative">
