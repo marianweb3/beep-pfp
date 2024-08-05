@@ -32,11 +32,11 @@ const useAvatarStore = createWithEqualityFn((set) => ({
     set({ isDownloadButtonClicked: isClicked }),
   randomize: () =>
     set({
-      background: `photo-1/bg${Math.floor(Math.random() * 5)}.png`,
+      background: `photo-1/bg${Math.floor(Math.random() * 9)}.png`,
       clothes: `photo-1/body${Math.floor(Math.random() * 1)}.png`,
       hat: `photo-1/hat${Math.floor(Math.random() * 12)}.png`,
       hand: `photo-1/hand${Math.floor(Math.random() * 11)}.png`,
-      acs: `photo-1/acs${Math.floor(Math.random() * 9)}.png`,
+      acs: `photo-1/acs${Math.floor(Math.random() * 5)}.png`,
       emotion: `photo-1/emotion${Math.floor(Math.random() * 2)}.png`,
       foot: `photo-1/foot${Math.floor(Math.random() * 7)}.png`,
     }),

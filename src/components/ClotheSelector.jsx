@@ -14,12 +14,12 @@ const tabs = [
 ];
 
 const imageCategories = {
-  background: Array.from({ length: 5 }, (_, i) => `photo-1/bg${i}.png`),
+  background: Array.from({ length: 9 }, (_, i) => `photo-1/bg${i}.png`),
   head: Array.from({ length: 1 }, (_, i) => `photo-1/body${i}.png`),
   hats: Array.from({ length: 12 }, (_, i) => `photo-1/hat${i}.png`),
   faces: Array.from({ length: 2 }, (_, i) => `photo-1/emotion${i}.png`),
   hands: Array.from({ length: 11 }, (_, i) => `photo-1/hand${i}.png`),
-  accessories: Array.from({ length: 9 }, (_, i) => `photo-1/acs${i}.png`),
+  accessories: Array.from({ length: 5 }, (_, i) => `photo-1/acs${i}.png`),
   foot: Array.from({ length: 6 }, (_, i) => `photo-1/foot${i}.png`),
 };
 
@@ -78,7 +78,6 @@ const ClotheSelector = () => {
 
   const renderedImages = useMemo(() => {
     return visibleImages?.map((image, index) => {
-      console.log(image, index);
       return (
         <LazyLoadImage
           key={index}

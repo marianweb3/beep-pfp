@@ -26,6 +26,28 @@ const Main = () => {
     selectedImageType,
   } = useAvatarStore(avatarSelector);
 
+  const getBackgroundImage = () => {
+    const bgIndex = parseInt(background.match(/\d+/g)[1]);
+
+    let size = "";
+    if (selectedImageType.type === "Twitter banner") {
+      size = "twitter-banner";
+    } else if (selectedImageType.type === "Mobile Wallpaper") {
+      size = "mobile-wallpaper";
+    } else if (selectedImageType.type === "Desktop Wallpaper") {
+      size = "desktop-wallpaper";
+    } else if (selectedImageType.type === "High Quality PFP") {
+      size = "high-PFP";
+    }
+
+    if (bgIndex >= 5 && bgIndex <= 8) {
+      return `photo-1/bg/bg${bgIndex}-${size}.png`;
+    }
+    return `photo-1/bg${bgIndex}.png`;
+  };
+
+  console.log(getBackgroundImage(), background);
+
   return (
     <div className="flex flex-col justify-center items-center min-h-[calc(100vh-184px)] relative z-10">
       <div
@@ -88,7 +110,7 @@ const Main = () => {
         className={`absolute top-[-9999px] left-[-9999px] bg-[#F8FFDE] flex justify-end ${
           selectedImageType.type === "Twitter banner"
             ? "justify-end"
-            : "items-center justify-center"
+            : "items-end justify-center"
         }`}
         id="pfpImage"
         style={{
@@ -97,8 +119,8 @@ const Main = () => {
         }}
       >
         <img
-          src={`/${background}`}
-          className="w-full h-full absolute left-0 top-0"
+          src={`/${getBackgroundImage()}`}
+          className="w-full h-full absolute left-0 top-0 object-contain"
           alt="Background"
         />
         <div className="size-[500px] relative">
